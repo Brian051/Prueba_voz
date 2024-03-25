@@ -35,24 +35,30 @@ function voz() {
         console.log("Texto reconocido:", transcript);
 
         // Comparar lo que se dijo con una variable específica
-        if (transcript.includes("Apagado.")) {
+        if (
+            transcript.includes("Apagado.") ||
+            transcript.includes("apagado") ||
+            transcript.includes("Apagado") ||
+            transcript.includes("apagado.")
+          ) {
             console.log("Te he escuchado");
           
             const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6WyJhZG1pbiIsIkN1c3RvbU9iamVjdENhbkJlQWRkZWRIZXJlIl0sIm5iZiI6MTcxMTM1OTk4NiwiZXhwIjoxNzExOTY0Nzg2LCJpYXQiOjE3MTEzNTk5ODZ9.7DL7B5eudtcZANhgXVexHDOqE4yzj1ijozpbkVXfyqc";
           
             // Configurar los encabezados de la solicitud
-            let headerss = {
+            const headers = {
               "Authorization": `Bearer ${token}`
             };
           
             fetch("https://207.180.229.60:9443/v1/api/CAJAS/7063", {
               method: 'GET',
-              headers: headerss,
+              headers: headers,
             })
             .then((res) => res.json())
             .then((res) => console.log(res))
             .catch((error) => console.error(error));
           }
+          
           
       };
 
@@ -150,3 +156,4 @@ document.addEventListener("DOMContentLoaded", function () {
     detailsBox.setAttribute("details-listener", "");
   }
 });
+
