@@ -35,11 +35,11 @@ function voz() {
         console.log("Texto reconocido:", transcript);
 
         // Comparar lo que se dijo con una variable específica
+        const textoNormalizado = transcript.toLowerCase().replace(/[^\w\s]/gi, '');
+
+        // Verificar si el texto normalizado incluye alguna de las palabras clave
         if (
-            transcript.includes("Apagado.") ||
-            transcript.includes("apagado") ||
-            transcript.includes("Apagado") ||
-            transcript.includes("apagado.")
+          textoNormalizado.includes("apagado")
           ) {
             console.log("Te he escuchado");
           
@@ -156,4 +156,5 @@ document.addEventListener("DOMContentLoaded", function () {
     detailsBox.setAttribute("details-listener", "");
   }
 });
+
 
